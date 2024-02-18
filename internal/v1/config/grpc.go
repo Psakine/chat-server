@@ -5,7 +5,7 @@ import (
 )
 
 const (
-	grpcHostEnvName = "localhost"
+	grpcHostEnvName = "0.0.0.0"
 	grpcPortEnvName = "50052"
 )
 
