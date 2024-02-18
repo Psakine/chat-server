@@ -1,5 +1,11 @@
 LOCAL_BIN:=$(CURDIR)/bin
 
+build-mac:
+	go build -o ${LOCAL_BIN}/ ${CURDIR}/cmd/grpc_server/main.go
+
+build-linux:
+	GOOS=linux GOARCH=amd64 go build -o ${LOCAL_BIN}/service_chat_server_linux ${CURDIR}/cmd/grpc_server/main.go
+
 install-deps:
 	GOBIN=$(LOCAL_BIN) go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.28.1
 	GOBIN=$(LOCAL_BIN) go install -mod=mod google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.2
