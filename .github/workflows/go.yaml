@@ -10,6 +10,8 @@ env:
   REGISTRY: "cr.selcloud.ru/psakine"
   IMAGE_NAME: "chat-server"
   CONTAINER_NAME: "chat-server-container"
+  GRPC_HOST: "localhost"
+  GRPC_PORT: 50052
 
 jobs:
   image-build-and-push:
