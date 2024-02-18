@@ -1,14 +1,12 @@
 package config
 
 import (
-	"errors"
 	"net"
-	"os"
 )
 
 const (
-	grpcHostEnvName = "GRPC_HOST"
-	grpcPortEnvName = "GRPC_PORT"
+	grpcHostEnvName = "localhost"
+	grpcPortEnvName = "50052"
 )
 
 // GRPCConfig describes config interface
@@ -23,21 +21,9 @@ type grpcConfig struct {
 
 // NewGRPCConfig creates config struct
 func NewGRPCConfig() (GRPCConfig, error) {
-	host := os.Getenv(grpcHostEnvName)
-
-	if len(host) == 0 {
-		return nil, errors.New("grpc host not defined")
-	}
-
-	port := os.Getenv(grpcPortEnvName)
-
-	if len(port) == 0 {
-		return nil, errors.New("grpc port not defined")
-	}
-
 	return &grpcConfig{
-		host,
-		port,
+		grpcHostEnvName,
+		grpcPortEnvName,
 	}, nil
 }
 
