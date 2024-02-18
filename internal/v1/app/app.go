@@ -8,7 +8,6 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
 
-	"github.com/Psakine/chat-server/internal/v1/config"
 	"github.com/Psakine/chat-server/pkg/v1/chat"
 )
 
@@ -38,7 +37,6 @@ func (a *App) Run() error {
 
 func (a *App) initDeps(ctx context.Context) error {
 	inits := []func(ctx context.Context) error{
-		a.initConfig,
 		a.initServiceProvider,
 		a.initGRPCServer,
 	}
@@ -52,10 +50,6 @@ func (a *App) initDeps(ctx context.Context) error {
 	}
 
 	return nil
-}
-
-func (a *App) initConfig(_ context.Context) error {
-	return config.Load(".env")
 }
 
 func (a *App) initServiceProvider(_ context.Context) error {
